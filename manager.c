@@ -237,5 +237,7 @@ int loadData(Product *p[],int index){
     }
     fclose(fp);
 
+    printf("==> 로딩 완료! \n\n");
+
     return count;
 }
