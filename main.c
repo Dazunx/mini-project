@@ -23,7 +23,7 @@ int main(void){
         }
         else if (menu == 2) {
             p[index] = (Product *)malloc(sizeof(Product)); //메모리 동적할당
-            count += createProduct(p[index++]);
+            count += createProduct(p[count++]);
             printf("=> 추가됨!\n");
         }
         else if (menu == 3) {
@@ -35,7 +35,7 @@ int main(void){
             updateProduct(p[num-1]);
         }
         else if (menu == 4) {
-            num = selectDataNo(p,index);
+            num = selectDataNo(p,count);
             if(num == 0) {
                 printf("=> 취소됨!\n");
                 continue;
