@@ -205,3 +205,33 @@ void savdData(Product *p[],int count){
     fclose(fp);
     printf("==> 저장됨!\n\n");
 }
+
+int loadData(Product *p[],int index){
+    char *ptr;
+    char str[256];
+    int count=0;
+    FILE *fp = fopen("menu.txt","rt");
+
+
+    while(!feof(fp)){
+        fgets(str,255,fp);
+
+        p[count+index] = (Product *)malloc(sizeof(Product)); //메모리 동적할당
+
+        ptr = strtok(str,";");
+        strcpy(p[count+index]->name,ptr);
+        ptr = strtok(NULL,";");
+        strcpy(p[count+index]->size,ptr);
+        ptr = strtok(NULL,";");
+        strcpy(p[count+index]->comment,ptr);
+        ptr = strtok(NULL,";");
+        p[count+index]->price = atoi(ptr);
+        ptr = strtok(NULL,";");
+        p[count+index]->deli = atoi(ptr);
+        ptr = strtok(NULL,";");
+        count++;
+    }
+    fclose(fp);
+
+    return count;
+}
