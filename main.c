@@ -17,7 +17,7 @@ int main(void){
         if (menu == 0) break;
         if (menu == 1) {
             if(count > 0)
-                listProduct(p,index);
+                listProduct(p,count);
             else   
                 printf("데이터가 없습니다.\n");
         }
@@ -27,7 +27,7 @@ int main(void){
             printf("=> 추가됨!\n");
         }
         else if (menu == 3) {
-            num = selectDataNo(p,index);
+            num = selectDataNo(p,count);
             if(num == 0) {
                 printf("=> 취소됨!\n");
                 continue;
