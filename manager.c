@@ -212,6 +212,10 @@ int loadData(Product *p[],int index){
     int count=0;
     FILE *fp = fopen("menu.txt","rt");
 
+    if(fp==NULL) {
+        printf("==> 파일 없음! \n\n");
+        return 0;
+    }
 
     while(!feof(fp)){
         fgets(str,255,fp);
