@@ -3,7 +3,6 @@
 int main(void){
     Product *p[100]; //포인터변수 선언
     int count = 0, menu;
-    int index = 0;
     int num;
     char user[20];
 
@@ -12,6 +11,8 @@ int main(void){
     scanf("%s",user);
     printf("Welcome %s!\n",user);
 #endif
+    count += loadData(p);
+	
     while (1){
 	menu = selectMenu();
         if (menu == 0) break;
@@ -46,7 +47,6 @@ int main(void){
             if(deleteok == 1){
                 if(p[num-1]) free(p[num-1]); //동적할당 해제
                 p[num-1] = NULL; //포인터 해제
-                count--;
                 printf("=> 삭제됨!\n");
             }
         }
