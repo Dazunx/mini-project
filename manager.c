@@ -106,7 +106,6 @@ int deleteProduct(Product *p[], int count){
     if(deleteok == 1){
         if(p[num-1]) free(p[num-1]);
         p[num-1] = NULL;
-        count--;
         printf("=> 삭제됨!\n");
     }
     return 0;
@@ -207,7 +206,7 @@ void savdData(Product *p[],int count){
     printf("==> 저장됨!\n\n");
 }
 
-int loadData(Product *p[],int index){
+int loadData(Product *p[]){
     char *ptr;
     char str[256];
     int count=0;
@@ -221,24 +220,23 @@ int loadData(Product *p[],int index){
     while(!feof(fp)){
         fgets(str,255,fp);
 
-        p[count+index] = (Product *)malloc(sizeof(Product)); //메모리 동적할당
+        p[count] = (Product *)malloc(sizeof(Product)); //메모리 동적할당
 
         ptr = strtok(str,";");
-        strcpy(p[count+index]->name,ptr);
+        strcpy(p[count]->name,ptr);
         ptr = strtok(NULL,";");
-        strcpy(p[count+index]->size,ptr);
+        strcpy(p[count]->size,ptr);
         ptr = strtok(NULL,";");
-        strcpy(p[count+index]->comment,ptr);
+        strcpy(p[count]->comment,ptr);
         ptr = strtok(NULL,";");
-        p[count+index]->price = atoi(ptr);
+        p[count]->price = atoi(ptr);
         ptr = strtok(NULL,";");
-        p[count+index]->deli = atoi(ptr);
+        p[count]->deli = atoi(ptr);
         ptr = strtok(NULL,";");
         count++;
     }
     fclose(fp);
 
     printf("==> 로딩 완료! \n\n");
-
     return count;
 }
